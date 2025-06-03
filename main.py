@@ -228,17 +228,14 @@ st.pyplot(fig)
 
 # Analysis
 import requests
-import streamlit as st
-
+import urllib.parse
 st.subheader("Previous Trend Analysis")
 
-# 安全转换文件名（避免特殊字符问题）
-safe_filename = selected_game.replace(":", "").replace("'", "").replace(" ", "")
+# 转换文件名中可能的特殊字符
+safe_filename = urllib.parse.quote(f"{selected_game}.txt")
+base_url = "https://raw.githubusercontent.com/ChenxiZhaoAlan/streamlit_project4/main/trend_analysis"
+file_url = f"{base_url}/{safe_filename}"
 
-# ✅ GitHub 原始内容地址（raw）
-file_url = f"https://raw.githubusercontent.com/ChenxiZhaoAlan/streamlit_project4/main/trend_analysis/{safe_filename}.txt"
-
-# 请求并显示分析内容
 try:
     response = requests.get(file_url)
     if response.status_code == 200:
@@ -248,8 +245,6 @@ try:
         st.warning(f"No analysis found for {selected_game}. (HTTP {response.status_code})")
 except Exception as e:
     st.error(f"Failed to fetch analysis text: {e}")
-
-
 #-------------------------------------------------------------------------
 # Time series analysis
 # Set up indexes and fill in missing values
