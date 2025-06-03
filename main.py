@@ -495,28 +495,32 @@ if df_prophet.shape[0] >= 12:
         st.subheader("Forecast Chart (Next 12 Months)")
         st.plotly_chart(fig, use_container_width=True)
 
-        # 2. Decomposition Chart: Trend / Seasonality
+        # 2. Decomposition Chart: Trend / Seasonality (forecast-only)
+        forecast_future = forecast[forecast['Time'] > df_prophet['ds'].max()]
         components = ['trend']
         if 'weekly' in forecast.columns: components.append('weekly')
         if 'yearly' in forecast.columns: components.append('yearly')
 
-        fig_comp = make_subplots(rows=len(components), cols=1, shared_xaxes=True, subplot_titles=[c.title() for c in components])
+        fig_comp = make_subplots(
+            rows=len(components), cols=1, shared_xaxes=True,
+            subplot_titles=[c.title() for c in components]
+        )
 
         for i, comp in enumerate(components, start=1):
             fig_comp.add_trace(go.Scatter(
-                x=forecast['Time'], y=forecast[comp],
+                x=forecast_future['Time'], y=forecast_future[comp],
                 mode='lines', name=comp.title(), line=dict(width=2)
             ), row=i, col=1)
 
         fig_comp.update_layout(
             height=300 * len(components),
-            title_text="Forecast Components (Trend / Seasonality)",
+            title_text="Forecast Components (Future Only)",
             plot_bgcolor='rgba(0,0,0,0)',
             paper_bgcolor='rgba(0,0,0,0)',
             showlegend=False
         )
 
-        st.subheader("Forecast Components")
+        st.subheader("Forecast Components (Next Year)")
         st.plotly_chart(fig_comp, use_container_width=True)
 
         # 3. Expandable prediction data table
@@ -524,6 +528,7 @@ if df_prophet.shape[0] >= 12:
             st.dataframe(forecast[['Time', 'forecast_value', 'forecast_value_lower', 'forecast_value_upper']].tail(12).reset_index(drop=True))
 
         st.success("Forecast complete.")
+
 else:
     st.warning("Not enough data to train the forecasting model (need at least 12 months).")
 
@@ -568,6 +573,8 @@ feature_df = pd.DataFrame(features, columns=[
 
 feature_df.dropna(inplace=True)
 game_names = feature_df.index.tolist()
+
+st.header("🔭 Forecasting Future Player Trends (SARIMA)")
 
 
 
