@@ -1,0 +1,11 @@
+1. "Seasonal Decomposition" graph:
+
+- Trend: Captures the long-term movement, which largely mirrors the major peak in 2020, suggesting a significant, but temporary, surge in overall activity.
+- Seasonal: Displays a robust and consistent cyclical pattern, indicating highly regular recurring fluctuations throughout the year. The amplitude of these seasonal variations appears stable.
+- Resid (Residuals): It shows some remaining variability, particularly a noticeably significant negative spike coinciding with the central peak in the original series around 2020. This indicates an important event that was not fully explained by the trend or seasonal components, possibly a sharp decline immediately after the peak or an unexplained deviation.
+
+The ADF Statistic (-7.429) is highly negative, and the p-value (6.749e-11) is extremely small, well below typical significance levels. It is significantly below the critical values at 1%, 5%, and 10% significance levels. This strongly suggests that the "Terraria" time series is stationary, meaning its statistical properties (such as mean and variance) remain constant over time.
+
+2. ACF: Shows a very slow decay, with significant autocorrelation extending to many lags (well beyond 40 lags). This indicates a strong dependence between observations over time, consistent with the observed trend and strong seasonality. The slow decay suggests that even after accounting for trend and seasonality, strong correlations remain.
+
+3. PACF: Exhibits a significant spike at lag 1, and then quickly drops to near zero for subsequent lags, with a few small negative spikes at later lags (e.g., around lag 35).

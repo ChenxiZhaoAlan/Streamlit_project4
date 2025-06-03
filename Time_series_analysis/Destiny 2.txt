@@ -1,0 +1,11 @@
+1. "Seasonal Decomposition" graph:
+
+Trend: Captures the underlying long-term movement, which generally mirrors the original series' peaks and troughs, indicating periods of increased and decreased overall activity.
+Seasonal: Displays a clear and consistent cyclical pattern, suggesting regular recurring fluctuations within each year. The amplitude of these seasonal variations appears relatively stable.
+Resid (Residuals / Noise): It shows some remaining variability, particularly noticeable around 2023 and early 2024, indicating factors not captured by the trend or seasonal components.
+
+The ADF Statistic (-6.773) is highly negative, and the p-value (2.680e-09) is extremely small, well below typical significance levels. The ADF Statistic is also significantly lower than the critical values at 1%, 5%, and 10% significance levels. This strongly indicates that the "Destiny 2" time series is stationary, meaning its statistical properties are stable over time.
+
+2. ACF: Shows a slow decay, with significant autocorrelation extending to many lags (beyond 30 lags). This suggests a strong dependence between observations over time, indicating the presence of trend and/or seasonality. The pattern of decay is typical for a non-stationary series or one with strong seasonality.
+
+3. PACF: Exhibits a significant spike at lag 1, and then drops quickly to zero and remains there for subsequent lags. There's a minor negative spike around lag 6 or 7, possibly indicating a minor seasonal or autoregressive effect at that lag.

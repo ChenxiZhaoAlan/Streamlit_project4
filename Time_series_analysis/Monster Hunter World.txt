@@ -1,0 +1,11 @@
+1. "Seasonal Decomposition" graph:
+
+- Trend: Captures the long-term movement, mirroring the initial surge, subsequent overall decline, and minor upward movements.
+- Seasonal: Displays an evident and strong cyclical pattern, indicating highly consistent recurring fluctuations within each year. The strong vertical lines suggest a consistent high-frequency seasonality.
+- Resid (Residuals): It shows some remaining variability, particularly a noticeable fluctuation around late 2019/early 2020 and a dip in 2023, indicating factors not fully explained by the trend or strong seasonal components during those periods.
+
+The ADF Statistic (-4.329) is significantly negative, and the p-value (0.00039) is extremely small, well below standard significance levels. It is well below the critical values at 1%, 5%, and 10% significance levels. This strongly suggests that the "Monster Hunter World" time series is stationary, indicating that its statistical properties remain stable over time.
+
+2. ACF: Shows a very slow decay, with significant autocorrelation extending to many lags (well beyond 35 lags). This indicates a strong dependence between observations over time, consistent with the observed trend and strong seasonality. The slow decay suggests that even after accounting for trend and seasonality, strong correlations remain.
+
+3. PACF: Exhibits a significant spike at lag 1, and then quickly drops to near zero and remains there for subsequent lags, with some minor negative spikes (e.g., around lag three and a broader negative section later on). This pattern primarily suggests that the direct correlation between an observation and a previous observation is strongest at lag 1. The rapid drop-off after lag 1 often points towards an AR(1) process or that the series can be made stationary with a single differencing step. The minor negative spikes might indicate some complex short-term or seasonal dependencies.

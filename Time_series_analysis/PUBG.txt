@@ -1,0 +1,11 @@
+1. "Seasonal Decomposition" graph:
+
+- Trend: Captures the long-term movement, clearly mirroring the initial surge and subsequent long-term decline, eventually leveling off.
+- Seasonal: Displays an extreme and consistent cyclical pattern, indicating highly regular recurring fluctuations within each year. The dense vertical lines suggest pronounced high-frequency seasonality.
+- Resid (Residuals): It generally appears stable and centered around zero, but shows some noticeable fluctuations and a more prominent positive spike around late 2024/early 2025, suggesting an event not fully captured by the trend or seasonal components. 
+
+The ADF Statistic (-2.486) is relatively low, and the p-value (0.118) is greater than the conventional 0.05 or 0.10 significance levels. It is above all critical values (1%, 5%, and 10%). This suggests that the "PUBG" time series is non-stationary. The high p-value indicates that we cannot reject the null hypothesis of non-stationarity, implying that the series may have a unit root and its statistical properties may change over time. Differencing would likely be required to make it stationary.
+
+2. ACF: Shows a very slow decay, with significant autocorrelation extending to many lags (well beyond 35 lags). This indicates a strong dependence between observations over time, which is consistent with the visible trend and strong seasonality. The very slow decay reinforces the non-stationarity suggested by the ADF test.
+
+3. PACF: Exhibits a significant spike at lag 1, and then quickly drops to near zero, staying there for almost all subsequent lags, with some minor negative fluctuations around lag three and later on.

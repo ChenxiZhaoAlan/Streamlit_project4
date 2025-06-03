@@ -1,0 +1,11 @@
+1. "Seasonal Decomposition" graph:
+
+- Trend: Captures the long-term movement, mirroring the initial surge, a period of low activity, and then the subsequent rise and fall around the later peak.
+- Seasonal: Displays a strong and consistent cyclical pattern with clear recurring fluctuations, indicating regular seasonal variations throughout the observed period.
+- Resid (Residuals): It generally appears stable, but shows a substantial negative spike around late 2023/early 2024. This large residual suggests a significant event or anomaly that was not explained by the trend or seasonal components, possibly a sharp drop or an unexplained deviation from the expected pattern.
+
+The ADF Statistic (-4.983) is significantly negative, and the p-value (2.394e-05) is extremely small, much lower than standard significance levels. It is well below the critical values at 1%, 5%, and 10% significance levels. This strongly suggests that the "Elden Ring" time series is stationary, indicating that its statistical properties remain stable over time.
+
+2. ACF: Shows a very slow decay, with significant autocorrelation extending to many lags (well beyond 30 lags). This indicates a strong dependence between observations over time, consistent with the observed trend and strong seasonality. The slow decay suggests that even after accounting for trend and seasonality, strong correlations remain.
+
+3. PACF: Exhibits a significant spike at lag 1, and then quickly drops to near zero and remains there for subsequent lags, with minor fluctuations. This pattern strongly suggests that the direct correlation between an observation and a previous observation is primarily at lag 1. The rapid drop-off after lag 1 often points towards an AR(1) process or that the series can be made stationary with a single differencing step. However, the overall slow decay in the ACF still points towards the underlying trend and seasonality.

@@ -1,0 +1,13 @@
+1. "Seasonal Decomposition" graph:
+
+- Trend: Shows the long-term journey of player numbers. It started with strong growth until early 2023, then saw a general decline, and has recently shown signs of stabilization or a slight upward turn by early 2025.
+- Seasonal: Reveals predictable, repeating patterns. These are the regular spikes and dips that likely align with the release of new game seasons or major updates, demonstrating how new content reliably brings players back.
+- Residual: Represents the random, unpredictable fluctuations left over after the trend and seasonal effects are accounted for.
+
+In essence, Apex Legends' player count is a mix of its overall popularity changing over time (trend) and a consistent "game-as-a-service" cycle driven by regular content releases (seasonal patterns). The ADF test confirms the data is suitable for time series analysis, indicating these patterns are reliable.
+
+2. ACF: The correlations drop very slowly, staying high for many lags.
+- This strongly indicates a trend in the data, making it non-stationary. We'd likely need to "difference" the data (subtract previous values) to remove this trend for modeling.
+
+3. PACF: There's a strong correlation at lag 1, and then it drops off sharply.
+- This suggests that once the trend is removed, the current data point is primarily influenced by the immediately preceding point.

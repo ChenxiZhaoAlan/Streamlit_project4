@@ -1,0 +1,11 @@
+1. "Seasonal Decomposition" graph:
+
+Trend:  Captures the long-term movement of the data, largely mirroring the original series' peaks, indicating a general increase and then decrease in activity over time.
+Seasonal: Reveals a strong, consistent seasonal pattern, characterized by regular, high-frequency oscillations. This suggests recurring patterns within each year.
+Resid (Residuals / Noise):  It appears relatively stable, with some minor fluctuations, especially around mid-2023, where there's a dip indicating a potential anomaly not explained by the trend or seasonality.
+
+The ADF Statistic (-7.816) is highly negative, and the p-value (6.871e-12) is much smaller than common significance levels (e.g., 0.05). It is also significantly below the critical values at 1%, 5%, and 10% significance levels. This strongly suggests that the time series is stationary, meaning its statistical properties (such as mean and variance) remain constant over time.
+
+2. ACF: Shows very slow decay, with significant autocorrelation extending to many lags (up to at least 30 lags). This indicates a strong dependency between observations at different time points, implying the presence of a strong trend and/or seasonal component.
+
+3. PACF: Shows a significant spike at lag 1, and then quickly drops to near zero and stays there for subsequent lags. This suggests that most of the correlation between an observation and a previous observation is explained by the correlation at lag 1, and there are no strong direct correlations with observations further in the past once the effect of intermediate lags is removed. This pattern is characteristic of an AR(1) process or a series that can be made stationary with differencing.

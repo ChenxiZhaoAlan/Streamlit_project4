@@ -1,0 +1,12 @@
+1. "Seasonal Decomposition" graph:
+
+Trend: The trend component closely mirrors the original data in its overall shape. It shows a clear and sustained upward trend throughout the game's lifespan, with a slight flattening around 2018-2019, followed by a steep increase from 2020 onwards, culminating in the highest trend values in 2024-2025. This confirms a very strong and persistent long-term growth in CS: GO's popularity, especially in its later years.
+Seasonal: These represent predictable intra-year or intra-month patterns in player activity, likely related to events, holidays, or regular player habits (e.g., increased activity during specific weeks or months). Compared to the trend, their impact on the overall peak is small but consistent.
+Resid (Residuals / Noise): The residuals are primarily centered around zero, but they exhibit significant fluctuations. There are periods of greater variance (e.g., around 2014, 2018, and particularly from 2022 onwards) and seemingly less variance in between. The size of these fluctuations is considerable (up to +/- 50,000 players). The presence of significant residuals suggests that factors beyond the smooth trend and simple seasonal cycles are impacting player numbers. 
+
+
+We fail to reject the null hypothesis. This strongly suggests that the CS: GO time series is non-stationary and contains a unit root (i.e., a trend). This aligns with the visual observation of a powerful, sustained upward trend in the "Trend" plot.
+
+2. ACF: The ACF shows a very strong, significant positive autocorrelation that decays extremely slowly. The correlations remain well above the confidence interval for all displayed lags (up to 35). This pattern is a classic and powerful indicator of a non-stationary time series with a pronounced trend. Past values have a very persistent and strong influence on future values.
+
+3. PACF: The PACF shows an extreme, significant positive spike at lag 1 (close to 1.0). After lag 1, the partial autocorrelations drop off very sharply and are largely insignificant (within or close to the blue band) for most subsequent lags, with some minor negative spikes. This pattern strongly suggests that, if the series were made stationary (e.g., through differencing), it would exhibit strong autoregressive (AR) behavior of order 1 (AR(1)). The current value is directly and primarily related to the immediately preceding value.

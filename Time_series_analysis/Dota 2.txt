@@ -1,0 +1,11 @@
+1. "Seasonal Decomposition" graph:
+
+- Trend: Captures the long-term movement, mirroring the original series' growth until 2016-2017 and then its subsequent variations.
+- Seasonal: Displays an apparent and strong cyclical pattern, indicating highly consistent recurring fluctuations within each year. The vertical lines suggest a consistent high-frequency seasonality.
+- Resid (Residuals): It shows some variations, particularly noticeable in the early years (around 2014-2016), where there's more fluctuation, suggesting factors not fully captured by the trend or strong seasonal components during that period.
+
+The ADF Statistic (-2.859) is relatively low, and the p-value (0.058) is just above the conventional 0.05 significance level. It's close to the 5% critical value but not below it, and it's above the 1% and 10% critical values. This suggests that the series might be marginally non-stationary or very close to being stationary. While the p-value is close to 0.05, it doesn't definitively reject the null hypothesis of non-stationarity at that level. Further investigation or differencing might be needed to achieve clear stationarity.
+
+2. ACF: Shows a very slow decay, with significant autocorrelation persisting for a large number of lags (well beyond 35 lags). This indicates a strong dependence between observations over time, which is consistent with the visible trend and strong seasonality. The slow decay reinforces the possibility of non-stationarity suggested by the ADF test.
+
+3. PACF: Exhibits a significant spike at lag 1, and then quickly drops to near zero, staying there for almost all subsequent lags.
