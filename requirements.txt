@@ -6,5 +6,3 @@ scikit-learn
 statsmodels
 prophet
 numpy
-tensorflow
-
