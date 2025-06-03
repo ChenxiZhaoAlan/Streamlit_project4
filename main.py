@@ -2,11 +2,6 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
-from keras.models import Sequential
-from keras.layers import LSTM, Dense
-from sklearn.preprocessing import MinMaxScaler
-import numpy as np
-
 import seaborn as sns
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import adfuller
@@ -223,61 +218,18 @@ st.pyplot(fig)
 
 with st.expander("Show Cluster Data Table"):
     st.dataframe(feature_df)
+    
+    
+    
+st.header("🔧 Prophet 参数网格搜索优化")
 
+# 勾选触发优化功能
+enable_grid_search = st.checkbox("启用 Prophet 参数网格搜索优化")
 
-def run_lstm_forecast(df, steps_ahead=30):
-    scaler = MinMaxScaler(feature_range=(0, 1))
-    df_scaled = scaler.fit_transform(df[['Peak']])
+if enable_grid_search:
+    st.info("将使用 GridSearch 对 Prophet 模型的参数进行优化。")
 
-    # 创建训练集
-    X, y = [], []
-    window_size = 30
-    for i in range(window_size, len(df_scaled)):
-        X.append(df_scaled[i - window_size:i, 0])
-        y.append(df_scaled[i, 0])
-    X, y = np.array(X), np.array(y)
-    X = np.reshape(X, (X.shape[0], X.shape[1], 1))
-
-    # 构建 LSTM 模型
-    model = Sequential()
-    model.add(LSTM(units=50, return_sequences=True, input_shape=(X.shape[1], 1)))
-    model.add(LSTM(units=50))
-    model.add(Dense(1))
-    model.compile(optimizer='adam', loss='mean_squared_error')
-
-    # 训练模型
-    model.fit(X, y, epochs=10, batch_size=16, verbose=0)
-
-    # 预测未来值
-    input_seq = df_scaled[-window_size:]
-    predictions = []
-
-    for _ in range(steps_ahead):
-        input_reshaped = np.reshape(input_seq, (1, window_size, 1))
-        next_pred = model.predict(input_reshaped, verbose=0)
-        predictions.append(next_pred[0][0])
-        input_seq = np.append(input_seq[1:], next_pred, axis=0)
-
-    forecast_values = scaler.inverse_transform(np.array(predictions).reshape(-1, 1)).flatten()
-    last_date = df.index[-1]
-    forecast_dates = pd.date_range(last_date + pd.Timedelta(days=1), periods=steps_ahead)
-    return pd.DataFrame({'Date': forecast_dates, 'Predicted Peak': forecast_values})
-
-
-
-    # --- LSTM 模型预测 ---
-    st.header("🔮 LSTM Forecasting (Neural Network)")
-    if df.shape[0] >= 60:
-        with st.spinner("Training LSTM model..."):
-            forecast_df = run_lstm_forecast(df.reset_index(), steps_ahead=30)
-            fig, ax = plt.subplots(figsize=(10, 5))
-            ax.plot(df.index, df['Peak'], label='Historical', color='blue')
-            ax.plot(forecast_df['Date'], forecast_df['Predicted Peak'], label='Forecast (LSTM)', color='orange')
-            ax.set_title(f"LSTM Forecast for {selected_game}")
-            ax.set_xlabel("Date")
-            ax.set_ylabel("Peak Players")
-            ax.legend()
-            st.pyplot(fig)
-            st.success("LSTM Forecast complete.")
+    if df_prophet.shape[0] < 24:
+        st.warning("当前数据点少于 24，不适合进行交叉验证。")
     else:
-        st.warning("Not enough data to train LSTM model (need at least 60 days).")
+        with st.spinner("正在进行网格搜索优化..."):
