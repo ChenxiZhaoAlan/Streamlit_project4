@@ -592,7 +592,32 @@ feature_df = pd.DataFrame(features, columns=[
 feature_df.dropna(inplace=True)
 game_names = feature_df.index.tolist()
 
+st.header("🔭 Forecasting Future Player Trends (SARIMA)")
 
+st.subheader("📸 SARIMA Model Output")
+
+# 
+safe_filename = selected_game.replace(":", "").replace("'", "").replace(" ", "")
+image_path = f"image/{safe_filename}.png"
+
+# 
+if os.path.exists(image_path):
+    st.image(image_path, caption=f"{selected_game} - SARIMA Output", use_column_width=True)
+else:
+    st.warning(f"No SARIMA image found for {selected_game}. Please check if '{image_path}' exists.")
+
+
+st.subheader("SARIMA Analysis")
+safe_filename = selected_game.replace(":", "").replace("'", "").replace(" ", "")
+file_path = f"SARIMA_analysis/{selected_game}.txt"
+
+# Displays the analyzed content of the corresponding game
+if os.path.exists(file_path):
+    with open(file_path, "r", encoding="utf-8") as f:
+        analysis_text = f.read()
+    st.markdown(f"📝 **{selected_game} Analysis:**\n\n{analysis_text}")
+else:
+    st.warning(f"No analysis found for {selected_game}. Please check if '{file_path}' exists.")
 
 
 
