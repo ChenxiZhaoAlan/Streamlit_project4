@@ -421,21 +421,6 @@ for ax in axes:
 st.pyplot(fig)
 
 # Analysis
-st.subheader("Current Trend Time Series Analysis")
-
-safe_filename = urllib.parse.quote(f"{selected_game}.txt")
-base_url = "https://raw.githubusercontent.com/ChenxiZhaoAlan/streamlit_project4/main/Time_series_analysis"
-file_url = f"{base_url}/{safe_filename}"
-
-try:
-    response = requests.get(file_url)
-    if response.status_code == 200:
-        analysis_text = response.text
-        st.markdown(f"📝 **{selected_game} Time Series Analysis:**\n\n{analysis_text}")
-    else:
-        st.warning(f"No analysis found for {selected_game}. (HTTP {response.status_code})")
-except Exception as e:
-    st.error(f"Failed to fetch time series analysis text: {e}")
 
 #------------------------------------------------------
 
