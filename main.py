@@ -5,6 +5,7 @@ import matplotlib.ticker as ticker
 from keras.models import Sequential
 from keras.layers import LSTM, Dense
 from sklearn.preprocessing import MinMaxScaler
+import numpy as np
 
 import seaborn as sns
 from statsmodels.tsa.seasonal import seasonal_decompose
