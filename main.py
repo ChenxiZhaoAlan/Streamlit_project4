@@ -1,32 +1,38 @@
-import streamlit as st
 import os
-import pandas as pd
-import matplotlib.ticker as ticker
-import seaborn as sns
+import warnings
 import itertools
+
+# 🌐 Web & App
+import streamlit as st
+
+# 📊 Data Handling
+import pandas as pd
 import numpy as np
+
+# 📈 Visualization
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+import matplotlib.dates as mdates
+import seaborn as sns
+from matplotlib import cm
+from matplotlib.patches import FancyBboxPatch
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+# 🔮 Prophet Forecasting
 from prophet import Prophet
 from prophet.diagnostics import cross_validation, performance_metrics
+
+# 📉 Time Series Analysis
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import adfuller
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+
+# 🤖 Machine Learning
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
-import matplotlib.dates as mdates
-import plotly.graph_objects as go
-import matplotlib.pyplot as plt
-from matplotlib import cm
-from matplotlib.patches import FancyBboxPatch
-from prophet import Prophet
-import warnings
-import matplotlib.pyplot as plt
-from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
-import streamlit as st
-import pandas as pd
-from prophet import Prophet
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
+
 
 
 
