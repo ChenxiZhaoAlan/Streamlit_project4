@@ -715,8 +715,16 @@ with st.expander("🔍 Perform Prophet parameter optimisation"):
 
             # plot visualization
             fig1 = final_model.plot(forecast)
+            fig1.set_facecolor("none")  # 设置透明背景
+            fig1.patch.set_alpha(0.0)
+            fig1.gca().set_title("Forecasted Peak Player Trend", fontsize=16)
+            fig1.gca().set_xlabel("Date", fontsize=12)
+            fig1.gca().set_ylabel("Peak Players", fontsize=12)
+            fig1.gca().grid(True, linestyle='--', alpha=0.6)
+
             st.pyplot(fig1)
 
+            
             fig2 = final_model.plot_components(forecast)
             st.pyplot(fig2)
             
