@@ -3,6 +3,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import seaborn as sns
+import itertools
+import numpy as np
+import pandas as pd
+from prophet import Prophet
+from prophet.diagnostics import cross_validation, performance_metrics
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import adfuller
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
@@ -223,11 +228,7 @@ with st.expander("Show Cluster Data Table"):
 
 # ----------------------------------------------
 
-import itertools
-import numpy as np
-import pandas as pd
-from prophet import Prophet
-from prophet.diagnostics import cross_validation, performance_metrics
+
 
 def run_prophet_grid_search(game_name, df):
     paramGrid = {
@@ -239,7 +240,7 @@ def run_prophet_grid_search(game_name, df):
 
     dfProphet = df[['Date', 'Peak']].rename(columns={'Date': 'ds', 'Peak': 'y'}).dropna()
     if dfProphet.shape[0] < 24:
-        return "数据点不足，无法进行优化", None, None
+        return "Insufficient data points for optimization", None, None
 
     rmses = []
     mapes = []
@@ -275,7 +276,7 @@ def run_prophet_grid_search(game_name, df):
             continue
 
     if not mapes:
-        return "所有参数组合均失败", None, None
+        return "All parameter combinations fail", None, None
 
     result_df = pd.DataFrame(valid_combos)
     result_df['MAPE'] = mapes
@@ -297,17 +298,17 @@ def run_prophet_grid_search(game_name, df):
     return result_df.sort_values('MAPE'), finalModel, forecast
 
 
-with st.expander("🔍 进行 Prophet 参数优化"):
-    if st.button("开始参数网格搜索"):
+with st.expander("🔍 Perform Prophet parameter optimisation"):
+    if st.button("Start grid search"):
         result_df, final_model, forecast = run_prophet_grid_search(selected_game, games[selected_game])
 
         if isinstance(result_df, str):
             st.warning(result_df)
         else:
-            st.success("网格搜索完成，最佳模型已训练。")
+            st.success("The grid search is complete and the best model has been trained.")
             st.dataframe(result_df)
 
-            # 可视化预测图
+            # plot visualization
             fig1 = final_model.plot(forecast)
             st.pyplot(fig1)
 
