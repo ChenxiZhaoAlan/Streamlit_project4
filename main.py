@@ -228,22 +228,25 @@ st.pyplot(fig)
 
 # Analysis
 import requests
-st.subheader("Previous Trend Analysis")
-# 清洗文件名，防止文件名不合法
-safe_filename = selected_game.replace(":", "").replace("'", "").replace(" ", "")
-# GitHub 原始文件地址（raw URL）
-raw_url = f"https://raw.githubusercontent.com/ChenxiZhaoAlan/streamlit_project4/main/trend_analysis/{safe_filename}.txt"
 
-# 请求并展示分析文本
+st.subheader("Previous Trend Analysis")
+
+# 安全转换文件名，防止空格、特殊字符导致无法找到对应的 GitHub 文件
+safe_filename = selected_game.replace(":", "").replace("'", "").replace(" ", "")
+base_url = "https://raw.githubusercontent.com/ChenxiZhaoAlan/streamlit_project4/main/trend_analysis"
+file_url = f"{base_url}/{safe_filename}.txt"
+
+# 请求并显示分析内容
 try:
-    response = requests.get(raw_url)
+    response = requests.get(file_url)
     if response.status_code == 200:
         analysis_text = response.text
         st.markdown(f"📝 **{selected_game} Analysis:**\n\n{analysis_text}")
     else:
         st.warning(f"No analysis found for {selected_game}. (HTTP {response.status_code})")
 except Exception as e:
-    st.error(f"Error fetching analysis from GitHub: {e}")
+    st.error(f"Failed to fetch analysis text: {e}")
+
 
 #-------------------------------------------------------------------------
 # Time series analysis
