@@ -218,9 +218,85 @@ st.pyplot(fig)
 
 with st.expander("Show Cluster Data Table"):
     st.dataframe(feature_df)
-    
-    
-    
+
+
+
+# ----------------------------------------------
+
+import itertools
+import numpy as np
+import pandas as pd
+from prophet import Prophet
+from prophet.diagnostics import cross_validation, performance_metrics
+
+def run_prophet_grid_search(game_name, df):
+    paramGrid = {
+        'changepoint_prior_scale': [0.01, 0.05, 0.1],
+        'seasonality_prior_scale': [1.0, 5.0, 10.0],
+        'seasonality_mode': ['additive', 'multiplicative']
+    }
+    allParamCombinations = [dict(zip(paramGrid.keys(), v)) for v in itertools.product(*paramGrid.values())]
+
+    dfProphet = df[['Date', 'Peak']].rename(columns={'Date': 'ds', 'Peak': 'y'}).dropna()
+    if dfProphet.shape[0] < 24:
+        return "数据点不足，无法进行优化", None, None
+
+    rmses = []
+    mapes = []
+    valid_combos = []
+
+    for params in allParamCombinations:
+        try:
+            modelGrid = Prophet(
+                growth='linear',
+                yearly_seasonality=True,
+                weekly_seasonality=False,
+                daily_seasonality=False,
+                **params
+            )
+            modelGrid.fit(dfProphet)
+
+            num_points = len(dfProphet['ds'])
+            initial_days = str(max(365, int(num_points * 0.5 * 30))) + ' days'
+            period_days = str(max(90, int(num_points * 0.15 * 30))) + ' days'
+            horizon_days = str(max(180, int(num_points * 0.2 * 30))) + ' days'
+
+            dfCv = cross_validation(modelGrid, initial=initial_days, period=period_days, horizon=horizon_days, parallel="processes")
+            dfP = performance_metrics(dfCv, metrics=['rmse', 'mape'])
+
+            if not dfP.empty:
+                mape = dfP['mape'].iloc[-1]
+                rmse = dfP['rmse'].iloc[-1]
+                if not np.isnan(mape) and not np.isinf(mape):
+                    rmses.append(rmse)
+                    mapes.append(mape)
+                    valid_combos.append(params)
+        except Exception:
+            continue
+
+    if not mapes:
+        return "所有参数组合均失败", None, None
+
+    result_df = pd.DataFrame(valid_combos)
+    result_df['MAPE'] = mapes
+    result_df['RMSE'] = rmses
+    best_idx = result_df['MAPE'].idxmin()
+    best_params = valid_combos[best_idx]
+
+    finalModel = Prophet(
+        growth='linear',
+        yearly_seasonality=True,
+        weekly_seasonality=False,
+        daily_seasonality=False,
+        **best_params
+    )
+    finalModel.fit(dfProphet)
+    future = finalModel.make_future_dataframe(periods=12, freq='MS')
+    forecast = finalModel.predict(future)
+
+    return result_df.sort_values('MAPE'), finalModel, forecast
+
+
 with st.expander("🔍 进行 Prophet 参数优化"):
     if st.button("开始参数网格搜索"):
         result_df, final_model, forecast = run_prophet_grid_search(selected_game, games[selected_game])
