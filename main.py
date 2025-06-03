@@ -1,4 +1,3 @@
-import os
 import warnings
 
 # 🌐 Streamlit & Web App
@@ -233,7 +232,7 @@ safe_filename = selected_game.replace(":", "").replace("'", "").replace(" ", "")
 file_path = f"trend_analysis/{selected_game}.txt"
 
 # Displays the analyzed content of the corresponding game
-if os.path.exists(file_path):
+if path.exists(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
         analysis_text = f.read()
     st.markdown(f"📝 **{selected_game} Analysis:**\n\n{analysis_text}")
@@ -424,7 +423,7 @@ safe_filename = selected_game.replace(":", "").replace("'", "").replace(" ", "")
 file_path = f"Time_series_analysis/{selected_game}.txt"
 
 # Displays the analyzed content of the corresponding game
-if os.path.exists(file_path):
+if path.exists(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
         analysis_text = f.read()
     st.markdown(f"📝 **{selected_game} Analysis:**\n\n{analysis_text}")
