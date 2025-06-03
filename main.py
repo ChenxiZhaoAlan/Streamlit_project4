@@ -233,7 +233,7 @@ st.subheader("Previous Trend Analysis")
 
 # 安全转换文件名，防止空格、特殊字符导致无法找到对应的 GitHub 文件
 safe_filename = selected_game.replace(":", "").replace("'", "").replace(" ", "")
-base_url = "https://raw.githubusercontent.com/ChenxiZhaoAlan/streamlit_project4/main/trend_analysis"
+base_url = "https://github.com/ChenxiZhaoAlan/streamlit_project4/tree/main/trend_analysis"
 file_url = f"{base_url}/{safe_filename}.txt"
 
 # 请求并显示分析内容
