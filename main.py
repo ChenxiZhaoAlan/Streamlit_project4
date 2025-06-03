@@ -1,24 +1,37 @@
+import os
+import warnings
+
+# 🌐 Streamlit & Web App
 import streamlit as st
+
+# 📊 Data Manipulation
 import pandas as pd
+import numpy as np
+import itertools
+
+# 📈 Plotting & Visualization
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
+import matplotlib.dates as mdates
 import seaborn as sns
-import itertools
-import numpy as np
-import pandas as pd
+from matplotlib import cm
+from matplotlib.patches import FancyBboxPatch
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+# 🔮 Prophet Forecasting
 from prophet import Prophet
 from prophet.diagnostics import cross_validation, performance_metrics
+
+# 📉 Time Series Analysis
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import adfuller
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+
+# 🤖 Machine Learning
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
-
-
-
-
-
 
 
 
@@ -58,7 +71,7 @@ def set_bg_gif(gif_url, opacity=0.2):
 
 set_bg_gif("https://forums.terraria.org/index.php?attachments/snowbiome720p-gif.412700/", opacity=0.2)
 
-# 加载 Google Fonts：Inter 字体（可放在页面最上方执行一次即可）
+# Loading Google Fonts: Inter font
 st.markdown("""
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
 """, unsafe_allow_html=True)
@@ -177,19 +190,18 @@ st.header("📈   Previous Trend")
 st.write("The Chart Below Shows Its Previous Trend")
 # Plot
 
-import matplotlib.dates as mdates
 
 df = games[selected_game].copy()
 fig, ax = plt.subplots(figsize=(10, 5))
 
-fig.patch.set_alpha(0.0)      # 设置整张图的背景为透明
-ax.patch.set_alpha(0.0)       # 设置绘图区背景为透明
+fig.patch.set_alpha(0.0)      # Set the background of the entire image to be transparent.
+ax.patch.set_alpha(0.0)       # Set the background of the drawing area to transparent
 
-# Plot 区域填充 + 线
+# Plot area filling + lines
 ax.fill_between(df['Date'], df['Peak'], color='#A1D6E2', alpha=0.6, label='Peak Area')
 ax.plot(df['Date'], df['Peak'], color='#0E5E85', linewidth=2.5, label='Peak Trend')
 
-# 突出最大值点（可选）
+# Highlight the maximum value point
 max_date = df.loc[df['Peak'].idxmax(), 'Date']
 max_value = df['Peak'].max()
 ax.scatter([max_date], [max_value], color='red', s=50, zorder=5)
@@ -197,43 +209,48 @@ ax.annotate(f'Max: {int(max_value):,}', xy=(max_date, max_value), xytext=(15, 10
             textcoords='offset points', fontsize=10, color='red', fontweight='bold',
             arrowprops=dict(arrowstyle='->', color='red'))
 
-# 样式美化
+# Style Enhancement
 ax.set_title(f"{selected_game} - Peak Player Trend", fontsize=18, fontweight='bold', pad=15)
 ax.set_xlabel("Year/Month", fontsize=12)
 ax.set_ylabel("Peak Players", fontsize=12)
 ax.grid(True, linestyle='--', alpha=0.5)
 ax.yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: f'{int(x):,}'))
 
-# 日期格式优化
-ax.xaxis.set_major_locator(mdates.MonthLocator(interval=12))  # 每月一个刻度
-ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))  # 年-月格式
+# Date format optimization
+ax.xaxis.set_major_locator(mdates.MonthLocator(interval=12))  # One scale per month
+ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
 fig.autofmt_xdate()
 
-# 去掉右边和上边边框线
+# Remove the right and top border lines
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
-
-# 图例（可选）
 ax.legend()
-
-# 显示图表
 st.pyplot(fig)
+
+# Analysis
+st.subheader("Previous Trend Analysis")
+safe_filename = selected_game.replace(":", "").replace("'", "").replace(" ", "")
+file_path = f"trend_analysis/{selected_game}.txt"
+
+# Displays the analyzed content of the corresponding game
+if os.path.exists(file_path):
+    with open(file_path, "r", encoding="utf-8") as f:
+        analysis_text = f.read()
+    st.markdown(f"📝 **{selected_game} Analysis:**\n\n{analysis_text}")
+else:
+    st.warning(f"No analysis found for {selected_game}. Please check if '{file_path}' exists.")
 
 #-------------------------------------------------------------------------
 # Time series analysis
-import plotly.graph_objects as go
-
-# 设置索引和填补缺失值
+# Set up indexes and fill in missing values
 df = games[selected_game].copy()
 df.set_index('Date', inplace=True)
 df = df.asfreq('D')
 df['Peak'] = df['Peak'].interpolate(method='linear')
-
-# 标题
 st.header("📊 Time Series Analysis")
 st.write("The chart below shows daily peak players (linear interpolation applied) and Augmented Dickey-Fuller (ADF) stationarity check.")
 
-# 创建 Plotly 图表
+# Create Plotly charts
 fig = go.Figure()
 fig.add_trace(go.Scatter(
     x=df.index, y=df['Peak'],
@@ -245,8 +262,8 @@ fig.add_trace(go.Scatter(
 fig.update_layout(
     title=dict(
         text=f'Monthly Peak Players - {selected_game}',
-        font=dict(size=22),  # ✅ 设置字号略小于 header
-        x=0.5,  # 标题居中
+        font=dict(size=22),
+        x=0.5,  # Title centered
         xanchor='center'
     ),
     xaxis_title='Year/Month',
@@ -266,21 +283,19 @@ fig.update_layout(
     )
 )
 
-# 显示图表
+# show grapher
 st.plotly_chart(fig, use_container_width=True)
 
 
 #-----------------------------------------------------------------------------
 # Rolling Mean
-import plotly.graph_objects as go
-
-# 计算滚动均值（30日）
+# Calculate the rolling mean (30 days)
 df['Rolling Mean (30 days)'] = df['Peak'].rolling(window=30).mean()
 
-# 创建交互式折线图
+# Create an interactive line chart
 fig = go.Figure()
 
-# 原始数据线
+# Original data cable
 fig.add_trace(go.Scatter(
     x=df.index, y=df['Peak'],
     mode='lines',
@@ -288,7 +303,7 @@ fig.add_trace(go.Scatter(
     line=dict(color='#0E5E85', width=2)
 ))
 
-# 滚动均线
+# Rolling moving average
 fig.add_trace(go.Scatter(
     x=df.index, y=df['Rolling Mean (30 days)'],
     mode='lines',
@@ -296,7 +311,7 @@ fig.add_trace(go.Scatter(
     line=dict(color='#F765A3', width=3, dash='dash')
 ))
 
-# 图表布局
+# Chart layout
 fig.update_layout(
     title=dict(
         text=" 30-Day Rolling Mean vs Daily Peak Players",
@@ -306,8 +321,8 @@ fig.update_layout(
     ),
     xaxis_title='Year/Month',
     yaxis_title='Peak Players',
-    plot_bgcolor='rgba(0,0,0,0)',     # 图背景透明
-    paper_bgcolor='rgba(0,0,0,0)',    # 页面背景透明
+    plot_bgcolor='rgba(0,0,0,0)', # transparency
+    paper_bgcolor='rgba(0,0,0,0)', # transparency
     font=dict(family='Segoe UI', size=14),
     xaxis=dict(
         tickformat="%Y-%m",
@@ -330,37 +345,34 @@ fig.update_layout(
 
 st.plotly_chart(fig, use_container_width=True)
 
-
 # Seasonal Decomposition
-import matplotlib.pyplot as plt
-
 st.subheader("Seasonal Decomposition")
 
-# 执行分解
+# Carry out decomposition
 decomposition = seasonal_decompose(df['Peak'], model='additive', period=30)
 
-# 创建子图，设置透明背景
+# Create subgraphs and set transparent background
 fig, axes = plt.subplots(4, 1, figsize=(10, 10), constrained_layout=True)
-fig.patch.set_alpha(0.0)  # 整体背景透明
+fig.patch.set_alpha(0.0)  # Overall background is transparent.
 
-# 子图样式统一参数
+# Uniform parameters for subgraph styles
 plot_kwargs = dict(grid=True, linewidth=2, alpha=0.9)
 
-# 绘制各部分
+# Draw each part
 decomposition.observed.plot(ax=axes[0], title='Observed', color='#1995AD', **plot_kwargs)
 decomposition.trend.plot(ax=axes[1], title='Trend', color='#1C4E80', **plot_kwargs)
 decomposition.seasonal.plot(ax=axes[2], title='Seasonal', color='#F39C12', **plot_kwargs)
 decomposition.resid.plot(ax=axes[3], title='Residual', color='#7F8C8D', **plot_kwargs)
 
-# 美化每个子图
+# Enhance each subgraph
 for ax in axes:
-    ax.set_facecolor('none')  # 区域背景透明
+    ax.set_facecolor('none')  # Regional background transparency
     ax.title.set_fontsize(14)
     ax.grid(True, linestyle='--', alpha=0.4)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
 
-# 展示图表
+# Display the chart
 st.pyplot(fig)
 
 
@@ -382,31 +394,43 @@ else:
 
 # ACF & PACF Plots
 
-import matplotlib.pyplot as plt
-from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 
 st.subheader("ACF and PACF")
 
-# 创建子图
+# Create subgraph
 fig, axes = plt.subplots(1, 2, figsize=(14, 4))
-fig.patch.set_alpha(0.0)  # 整张图背景透明
+fig.patch.set_alpha(0.0)  # The entire picture has a transparent background.
 
-# 绘制 ACF 和 PACF
+# plot ACF and PACF
 plot_acf(df['Peak'].dropna(), ax=axes[0], alpha=0.05)
 plot_pacf(df['Peak'].dropna(), ax=axes[1], alpha=0.05)
 
-# 样式优化
+# Style optimization
 axes[0].set_title('Autocorrelation (ACF)', fontsize=14, fontweight='bold')
 axes[1].set_title('Partial Autocorrelation (PACF)', fontsize=14, fontweight='bold')
 
 for ax in axes:
-    ax.set_facecolor('none')  # 绘图区透明
+    ax.set_facecolor('none')  # Drawing area is transparent
     ax.grid(True, linestyle='--', alpha=0.4)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
 
-# 显示图
+# display image
 st.pyplot(fig)
+
+# Analysis
+st.subheader("Current Trend Time Series Analysis")
+safe_filename = selected_game.replace(":", "").replace("'", "").replace(" ", "")
+file_path = f"Time_series_analysis/{selected_game}.txt"
+
+# Displays the analyzed content of the corresponding game
+if os.path.exists(file_path):
+    with open(file_path, "r", encoding="utf-8") as f:
+        analysis_text = f.read()
+    st.markdown(f"📝 **{selected_game} Analysis:**\n\n{analysis_text}")
+else:
+    st.warning(f"No analysis found for {selected_game}. Please check if '{file_path}' exists.")
+
 
 #------------------------------------------------------
 
@@ -414,25 +438,11 @@ st.pyplot(fig)
 st.header("🔭 Forecasting Future Player Trends (Prophet)")
 st.write("This section provides a 12-month forecast of peak players using Facebook's Prophet model.")
 
-from prophet import Prophet
-import warnings
+
 warnings.filterwarnings("ignore")
 
 # Prepare data for Prophet
-import streamlit as st
-import pandas as pd
-from prophet import Prophet
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-
-# 预处理数据
-import streamlit as st
-import pandas as pd
-from prophet import Prophet
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-
-# 预处理数据
+# preprocessing data
 df_prophet = games[selected_game][['Date', 'Peak']].rename(columns={'Date': 'ds', 'Peak': 'y'})
 df_prophet = df_prophet.dropna()
 
@@ -449,7 +459,7 @@ if df_prophet.shape[0] >= 12:
             'yhat_upper': 'forecast_value_upper'
         })
 
-        # ✅ 1. 主图：预测 vs 实际
+        # 1. Main image: Prediction vs Reality
         yhat = forecast[['Time', 'forecast_value', 'forecast_value_lower', 'forecast_value_upper']]
         actual = df_prophet.copy()
 
@@ -491,7 +501,7 @@ if df_prophet.shape[0] >= 12:
         st.subheader("Forecast Chart (Next 12 Months)")
         st.plotly_chart(fig, use_container_width=True)
 
-        # ✅ 2. 分解图：Trend / Seasonality
+        # 2. Decomposition Chart: Trend / Seasonality
         components = ['trend']
         if 'weekly' in forecast.columns: components.append('weekly')
         if 'yearly' in forecast.columns: components.append('yearly')
@@ -515,7 +525,7 @@ if df_prophet.shape[0] >= 12:
         st.subheader("Forecast Components")
         st.plotly_chart(fig_comp, use_container_width=True)
 
-        # ✅ 3. 可展开预测数据表
+        # 3. Expandable prediction data table
         with st.expander("Show Forecast Data"):
             st.dataframe(forecast[['Time', 'forecast_value', 'forecast_value_lower', 'forecast_value_upper']].tail(12).reset_index(drop=True))
 
@@ -538,15 +548,15 @@ for name, df in games.items():
     df['%Gain'] = df['%Gain'].astype(str).str.replace('%', '').str.replace(',', '')
     df['%Gain'] = pd.to_numeric(df['%Gain'], errors='coerce')
 
-    # 计算各列均值
+    # Calculate the mean values of each column
     col_means = df[['Peak', 'Gain', '%Gain']].mean()
 
-    # 如果所有列均值都为NaN，则跳过
+    # If the mean value of all columns is NaN, then skip.
     if col_means.isnull().any():
         print(f"❌ Skipped (all NaN): {name}")
         continue
 
-    # 用均值填补缺失值
+    # Fill in the missing values with the mean value.
     df_filled = df[['Peak', 'Gain', '%Gain']].fillna(col_means)
 
     features.append([
@@ -586,11 +596,6 @@ pca = PCA(n_components=2)
 X_pca = pca.fit_transform(X_scaled)
 
 # Plotting
-import matplotlib.pyplot as plt
-from matplotlib import cm
-from matplotlib.patches import FancyBboxPatch
-
-# 使用更鲜明的颜色映射，如 Set2（也可试试 tab10, tab20）
 cmap = cm.get_cmap('Set2', np.unique(clusters).size)
 
 fig, ax = plt.subplots(figsize=(10, 8))
@@ -599,7 +604,7 @@ ax.set_facecolor('none')
 
 scatter = ax.scatter(X_pca[:, 0], X_pca[:, 1], c=clusters, cmap=cmap, s=100, edgecolor='black', linewidth=0.5)
 
-# 添加标签：带描边/白底，提高可读性
+# Add labels
 for i, name in enumerate(game_names):
     ax.text(
         X_pca[i, 0] + 0.03,
@@ -612,27 +617,29 @@ for i, name in enumerate(game_names):
         bbox=dict(facecolor='white', alpha=0.7, edgecolor='none', boxstyle='round,pad=0.2')
     )
 
-# 美化坐标轴和标题
+# beautify the axes and titles
 ax.set_title("🎮 Steam Game Clustering (K-Means + PCA)", fontsize=16, fontweight='bold', pad=15)
 ax.set_xlabel("PCA Component 1", fontsize=12)
 ax.set_ylabel("PCA Component 2", fontsize=12)
 ax.grid(True, linestyle='--', alpha=0.4)
 
-# 去掉上边和右边边框
+# Remove the top and right borders
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 
-# 添加颜色条
+# Add color bar
 cbar = fig.colorbar(scatter, ax=ax, label='Cluster', orientation='vertical')
 cbar.ax.tick_params(labelsize=10)
 
 st.pyplot(fig)
 
-
+st.write("This chart shows game clustering using K-Means, visualized with PCA. Each point is a game, and colors represent clusters:")
+st.write("- Cluster 0 (purple): Cyberpunk 2077, Monster Hunter World - likely single-player RPGs.")
+st.write("- Cluster 1 (teal): CSGO, Dota 2 - competitive multiplayer games.")
+st.write("- Cluster 2 (yellow): Terraria, Destiny 2, Baldur's Gate 3 - diverse mix with co-op or progression elements.")
 
 
 # ----------------------------------------------
-
 
 
 def run_prophet_grid_search(game_name, df):
@@ -715,7 +722,7 @@ with st.expander("🔍 Perform Prophet parameter optimisation"):
 
             # plot visualization
             fig1 = final_model.plot(forecast)
-            fig1.set_facecolor("none")  # 设置透明背景
+            fig1.set_facecolor("none")  # Set transparent background
             fig1.patch.set_alpha(0.0)
             fig1.gca().set_title("Forecasted Peak Player Trend", fontsize=16)
             fig1.gca().set_xlabel("Date", fontsize=12)
@@ -723,20 +730,21 @@ with st.expander("🔍 Perform Prophet parameter optimisation"):
             fig1.gca().grid(True, linestyle='--', alpha=0.6)
 
             st.pyplot(fig1)
-
             
+
             fig2 = final_model.plot_components(forecast)
 
-            # ✅ 统一美化所有子图
+            # Uniformly beautify all subplots
             for ax in fig2.get_axes():
-                ax.set_facecolor("none")                      # 背景透明
-                ax.grid(True, linestyle='--', alpha=0.5)      # 柔和网格线
-                ax.title.set_fontsize(14)                     # 子图标题字号
-                ax.xaxis.label.set_fontsize(12)               # x轴标签字号
-                ax.yaxis.label.set_fontsize(12)               # y轴标签字号
+                ax.set_facecolor("none")
+                ax.grid(True, linestyle='--', alpha=0.5)
+                ax.title.set_fontsize(14)
+                ax.xaxis.label.set_fontsize(12)
+                ax.yaxis.label.set_fontsize(12)
 
-            fig2.patch.set_alpha(0.0)                         # 整体背景透明
+            fig2.patch.set_alpha(0.0)                        
             fig2.tight_layout()
 
             st.pyplot(fig2)
+                        
             
