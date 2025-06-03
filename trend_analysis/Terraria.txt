@@ -1,0 +1,14 @@
+### Terraria
+The graph for Terraria, a long-running and popular sandbox game, demonstrates remarkable longevity with several distinct periods of significant player spikes, primarily driven by major content updates, rather than a continuous linear trend. It maintains a healthy, consistent player base years after its initial release.
+
+1. **Initial Steady Growth and Early Peaks (2011-2014):** Following its release, Terraria exhibits initial growth, reaching small peaks of around 50,000 players. A more substantial peak occurs in late 2013 or early 2014, with a peak of nearly 100,000 players, likely coinciding with a significant content update (e.g., the 1.2 update in late 2013).
+
+2. **Recurring Spikes (2015-2019):** Throughout this period, the game maintains a baseline of 20,000-40,000 peak players. However, there are notable recurring spikes, such as one reaching over 150,000 in early 2015/2016. These spikes typically correlate with major game updates (e.g., 1.3 update in June 2015), which consistently bring players back to explore new content.
+
+3. **Massive "Journey's End" Peak (Early 2020):** This is the most dramatic feature of the graph. Around mid-2020 (specifically, May 2020), Terraria experienced an unprecedented surge in peak players, skyrocketing to nearly 500,000. This immense peak is directly attributed to the release of its "final major content update," Journey's End (version 1.4). This update generated massive hype and brought back almost the entire player base.
+
+4. **Post-Journey's End Decline and New Baseline (Mid-2020 to Early 2022):** Following the "Journey's End" peak, a sharp but expected decline occurred. However, the game settled into a significantly higher baseline than its pre-2020 levels, generally fluctuating between 40,000 and 80,000 peak players throughout 2021 and the early part of 2022. This suggests the major update successfully expanded its long-term player base.
+
+5. **Continued Activity and Minor Spikes (Mid-2022 to Mid-2025):** The game continues to exhibit healthy activity. While the baseline remains relatively stable, there are occasional smaller peaks, such as one reaching over 100,000 in late 2022. These are likely tied to smaller updates, seasonal sales, or community events. The trend remains consistent, with players returning for new experiences or simply revisiting the game.
+
+6. **Current Trend (Early - Mid 2025):** As of early to mid-2025, the peak player count is consistently within the 40,000-60,000 range, indicating a very stable and dedicated community for a game that is over a decade old.

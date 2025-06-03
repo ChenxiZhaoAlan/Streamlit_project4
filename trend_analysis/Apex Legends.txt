@@ -1,0 +1,14 @@
+### Apex Legends
+The graph shows a dynamic trend in Apex Legends' peak player count over approximately four and a half years. There are clear periods of growth, peaks, and declines.
+
+1. **Initial Growth (Late 2020 - Mid 2021):** The game starts with a peak player count of around 100,000 in late 2020 and shows consistent, though sometimes volatile, growth, reaching over 300,000 peak players by mid-2021.
+
+2. **Continued Growth and Fluctuations (Mid-2021 - Early 2022):** The player count continues to fluctuate but generally trends upward, reaching peaks of nearly 400,000 players by early 2022. There is a notable dip around late 2021, followed by a rebound.
+
+3. **Significant Peak (Late 2022 - Early 2023):** The game experiences its most substantial surge in peak players, climbing rapidly from around 350,000 in late 2022 to its all-time high of over 600,000 peak players in early 2023. This indicates a highly successful period for the game, likely driven by the introduction of new content, seasons, or events.
+
+4. **Decline and Stabilization (Mid 2023 - Early 2024):** Following the peak in early 2023, there's a sharp decline, with peak players dropping to around 350,000 by mid-2023. The player count then stabilizes somewhat, fluctuating between 350,000 and 450,000 into early 2024.
+
+5. **Subsequent Decline (Early 2024 - Early 2025):** From early 2024 onwards, the graph shows a more consistent downward trend. While there are minor bumps, the overall direction is negative. Peak players fall from around 450,000 in early 2024 to below 200,000 by early 2025.
+
+6. **Recent Slight Recovery (Early 2025 - Mid 2025):** In the most recent data points (early to mid-2025), there's a slight uptick in peak players from the lowest point of this period, rising from roughly 150,000 to around 250,000. However, this is still significantly lower than the game's peak in early 2023.

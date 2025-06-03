@@ -1,0 +1,16 @@
+### Cyberpunk
+The graph for Cyberpunk 2077 is characterized by an extremely high initial peak at launch, followed by a rapid and sharp decline. Then a period of very low, stable player counts with notable, but much smaller, resurgences corresponding to significant updates.
+
+1. **Massive Launch Peak (Late 2020 - Early 2021):** The game launched with an enormous peak player count, surpassing 1,000,000 players (reaching its maximum on the chart). This indicates immense anticipation and hype for the game upon its release in December 2020.
+
+2. **Rapid and Steep Decline (Early 2021 - Mid 2021):** Immediately following the launch peak, there was an extremely sharp and rapid drop-off in peak players. Within a few months, the peak player count plummeted from over 1,000,000 to below 100,000. This dramatic decline is often attributed to the game's highly publicized technical issues, bugs, and performance problems on release, particularly on older console generations, which led to widespread dissatisfaction and refunds.
+
+3. **Low and Stable Period (Mid 2021 - Mid 2022):** Following the initial collapse, the peak player count stabilized at a very low level, generally hovering between 20,000 and 50,000 players throughout late 2021 and the early to mid-2022 period. This represents a dedicated but much smaller player base.
+
+4. **First Resurgence (Late 2022 - Early 2023):** In late 2022, there was a noticeable yet relatively modest increase in peak players, reaching approximately 150,000. This coincided with the release of the "Edgerunners" anime series on Netflix, which significantly boosted interest in the game.
+
+5. **Second and More Significant Resurgence (Mid 2023 - Early 2024):** The most substantial post-launch recovery occurred in mid to late 2023, where the peak player count surged to almost 300,000 players. This peak corresponds directly with the release of the highly anticipated "Phantom Liberty" expansion and the major 2.0 update, which overhauled many game systems and significantly improved the overall experience.
+
+6. **Post-Expansion Decline and New Stability (Early 2024 - Mid 2025):** Following the "Phantom Liberty" peak, there was another, more gradual, decline. However, the new stable baseline appears to be higher than the pre-Edgerunners and pre-2.0/Phantom Liberty levels, fluctuating between 50,000 and 100,000 peak players from mid-2025 onwards. This indicates that the updates and expansion successfully brought players back and retained a larger portion of them.
+
+7. **Recent Trend (Early to Mid-2025):** The latest data points indicate that the player count is hovering around 50,000-75,000, suggesting a sustained, albeit modest, player base following the major content releases.

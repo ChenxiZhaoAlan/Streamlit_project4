@@ -1,0 +1,14 @@
+### Dota 2
+The graph for Dota 2 shows a long-term trend characterized by significant growth in its early years, followed by a prolonged period of fluctuation and a general decline from its all-time highs. However, it maintains a substantial player base even a decade after its peak.
+
+1. **Rapid Growth (2012-2015):** The game begins with very low numbers in 2012 and experiences a rapid and consistent increase in peak players. It surpasses 500,000 by 2014 and reaches its first central peak of over 1,200,000 players around early 2015. This period reflects the game's emergence as a dominant force in the MOBA genre.
+
+2. **All-Time Peak and Initial Decline (2015 - 2017):** Dota 2 hits its highest peak on this graph, reaching approximately 1.3 million peak players in early 2016. Following this all-time high, there's a noticeable decline, with peak players falling to around 700,000-800,000 by late 2017.
+
+3. **Fluctuation and Stabilization (2017-2020):** From late 2017 to early 2020, the peak player count fluctuates largely between 700,000 and 850,000, with occasional spikes (e.g., reaching nearly 1.1 million in late 2019). This indicates a relatively stable, albeit lower, long-term player base.
+
+4. **COVID-19 Pandemic Bump (Early 2020):** There's a slight but clear resurgence in early 2020, likely influenced by the global increase in gaming activity during the initial phases of the COVID-19 pandemic. Peak players briefly touch 800,000.
+
+5. **Further Decline and Lower Baseline (Mid-2020 to Early 2022):** Following the pandemic surge, the overall trend continues downward. While there are minor fluctuations, the general baseline for peak players drops, often hovering around 600,000 to 750,000 throughout 2021 and early 2022.
+
+6. **Recent Resurgence and Fluctuations (Mid 2022 - Mid 2025):** Starting in mid-2022, there's a more significant resurgence, with peak players climbing back above 1,000,000 in early 2023. A decline follows, and then another smaller peak occurs around 950,000 in early 2024. The latest data points indicate that the player count is currently fluctuating between 600,000 and 700,000 by mid-2025. This recent pattern suggests that major updates or events can still draw a significant number of players back, but the sustained baseline is lower than its historical peak.

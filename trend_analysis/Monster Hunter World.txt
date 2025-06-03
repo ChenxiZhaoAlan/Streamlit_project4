@@ -1,0 +1,16 @@
+### MHW
+The graph for Monster Hunter: World demonstrates a typical pattern for a highly anticipated single-player/co-op game with major expansions. It features a massive initial launch peak, a significant second peak tied to its major expansion, and then a long-term decline towards a smaller, stable player base, with occasional minor resurgences.
+
+1. **Initial Launch Peak (Early 2018):** The game launched to an enormous peak player count, reaching over 300,000 players (around 330,000) in early 2018. This represents the PC release, which occurred several months after the console launch, indicating intense anticipation for the PC version.
+
+2. **Rapid Post-Launch Decline (Mid-2018 - Early 2019):** Following the impressive launch, there was a sharp and rapid decline in peak player numbers. Within months, the count fell from its peak to below 50,000. This is a common pattern for games of this genre, where players complete the main content.
+
+3. **First Major Resurgence (Early 2019):** After the initial decline, there's a smaller but noticeable bump in peak players around early 2019, reaching around 100,000. This might correspond to the release of a significant free title update or event.
+
+4. **Massive Expansion Peak (Late 2019 - Early 2020):** The game experienced its second-largest peak, soaring to over 280,000 peak players in late 2019 / early 2020. This significant surge is almost certainly tied to the release of the "Iceborne" expansion (PC release in January 2020), which provided a substantial amount of new content and drew a considerable number of players back.
+
+5. **Post-Expansion Decline and Long-Term Stability (Mid 2020 - Late 2023):** After the "Iceborne" peak, there's another substantial decline. The peak player count then settles into a much lower, more stable range, generally fluctuating between 25,000 and 70,000 players throughout 2021, 2022, and much of 2023. This represents the dedicated community that continues to play the game.
+
+6. **Recent Resurgence (Early 2024):** Around early 2024, there's a notable increase in peak players, reaching over 150,000. This spike is highly likely due to a significant announcement regarding the Monster Hunter franchise, specifically the reveal of "Monster Hunter Wilds" at The Game Awards in December 2023, which often prompts players to return to previous titles in the series.
+
+7. **Subsequent Decline (Mid 2024 - Mid 2025):** Following the early 2024 bump, the player count again enters a decline, falling to below 50,000 by mid-2025. This is typical as the excitement from the announcement fades and players await the new game.

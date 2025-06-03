@@ -1,0 +1,14 @@
+### CSGO
+The graph illustrates the long-term trend of peak players in CS: GO (Counter-Strike: Global Offensive), showcasing remarkable longevity and several distinct phases of growth and stabilization, with a notable surge in recent years.
+
+1. **Early Growth (2012 - 2015):** After its release in 2012, CS: GO experienced a steady and significant ramp-up in its peak player count. Starting from very low numbers, it gradually climbed, surpassing 500,000 peak players by early 2015 and reaching around 800,000 by mid-2015. This period marks the game's establishment of its player base and growth in popularity.
+
+2. **Initial Peak and Stabilization (2015-2017):** The game reached an early peak of approximately 850,000 players around 2015-2016. Following this, the peak player count largely stabilized, fluctuating between 600,000 and 800,000 throughout 2016 and 2017. This suggests a mature player base during this period.
+
+3. **Slight Decline and Rebound (2018 - 2019):** Around 2018, there's a noticeable dip in peak players, with the count falling to around 400,000-500,000. However, this was followed by a strong recovery and renewed growth towards the end of 2019.
+
+4. **Significant Surge (Late 2019 - Early 2020):** The graph shows a dramatic increase in peak players starting in late 2019 and accelerating into early 2020, where it first surpassed 1,000,000 peak players and reached approximately 1,250,000. This period was likely influenced by various factors, including the global increase in gaming due to the COVID-19 pandemic and significant game updates.
+
+5. **Sustained High Levels and Fluctuations (2020 - 2022):** After the initial surge in early 2020, CS: GO maintained a very high peak player count, generally fluctuating between 800,000 and 1,250,000 throughout 2020, 2021, and 2022. This demonstrates sustained popularity at a high level.
+
+6. **New All-Time Highs (2023 - Mid 2025):** From early 2023 onwards, the game experienced another massive surge, pushing peak players to unprecedented levels. It broke its previous records, consistently staying well above 1,250,000, and reaching multiple new all-time highs, including over 1,750,000 in early 2023 and again in late 2024 / early 2025. This period coincides with the announcement and release of Counter-Strike 2 (CS2), which effectively replaced CS: GO. The peak near the end of the graph, currently around 1,750,000, suggests a continued strong player base following the transition.

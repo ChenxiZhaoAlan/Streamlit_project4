@@ -1,0 +1,20 @@
+### Destiny 2
+The graph for Destiny 2 shows a highly cyclical pattern in its peak player count, characterized by significant spikes followed by sharp declines, then a recovery for the next peak. These spikes typically coincide with major content releases, which is common for "games-as-a-service" titles like Destiny 2. Although there is no continuous upward trend, the game exhibits consistent engagement around its release cycles.
+
+1. **Late 2019 Peak (~290,000 players):** The graph begins with a strong peak, likely corresponding to a significant expansion or season launch around that time (e.g., Shadowkeep in October 2019).
+
+2. **Decline and Recovery (Early 2020 - Mid 2020):** Following the initial peak, there's a sharp drop, with peak players falling to around 70,000-80,000. This is followed by a recovery, leading to a smaller peak (around 210,000) in mid-2020, likely tied to another seasonal or content release.
+
+3. **Consistent Cyclical Pattern (Late 2020 - Early 2022):** This pattern, characterized by significant peaks followed by valleys, becomes the dominant trend.
+
+4. **Late 2020 Peak (~240,000 players):** Likely tied to the Beyond Light expansion (November 2020).
+
+5. **Early 2022 Peak (~290,000 players):** This prominent peak corresponds to the release of The Witch Queen expansion (February 2022), indicating a highly successful content drop.
+
+6. **Highest Recorded Peak (Early 2023, >300,000 players):** This is the highest peak on the graph, reaching just over 300,000 peak players. This surge is directly attributable to the release of the Lightfall expansion (February 2023).
+
+7. **Post-Lightfall Decline (Mid 2023):** A significant drop occurs after the Lightfall peak, with players falling back towards 50,000-70,000, which is typical for the lull between major content releases.
+
+8. **Recurring Peak (Late 2023 - Early 2024):** A prominent peak reappears around late 2023 / early 2024, reaching over 300,000 players again. This is likely due to the release of a significant seasonal update, or possibly a major event or annual expansion. This peak matches the prior highest peak, suggesting strong player engagement for these major updates.
+
+9. **Recent Decline (Early 2024 - Mid 2025):** The latest trend indicates a decline from the early 2024 peak, with peak players dropping to levels between 40,000 and 70,000 by early to mid-2025. This suggests that the game is currently in a "trough" period between major releases, or that anticipation for the next major release (The Final Shape, initially slated for early 2024 but delayed to June 2024) has led some players to take a break.

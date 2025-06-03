@@ -1,0 +1,12 @@
+### PUBG
+The graph for PUBG (PlayerUnknown's Battlegrounds) illustrates a classic "pioneering game" trend: an explosive, unprecedented launch and early peak, followed by a significant and prolonged decline as competitors emerge, and then a period of stabilization and a notable resurgence, particularly in recent years.
+
+1. **Explosive Growth and All-Time Peak (Early 2017 - Early 2018):** PUBG experienced an incredibly rapid and massive surge in peak players shortly after its Early Access release in early 2017. It quickly climbed from zero to an unprecedented all-time peak of over 3,250,000 players by early 2018. This period solidified PUBG's status as the progenitor of the battle royale genre and a global phenomenon.
+
+2. **Rapid Decline from Peak (Mid 2018 - Mid 2019):** Following its record-breaking peak, PUBG experienced a sharp and continuous decline in peak players. The count dropped from over 3 million to around 1 million by mid-2019. This decline can be attributed to several factors, including the emergence of strong competitors (like Fortnite and Apex Legends), ongoing performance issues, and persistent cheating problems.
+
+3. **Fluctuating Decline and Stabilization (Late 2019 - Early 2023):** For several years, the peak player count continued to decline, albeit at a slower pace, with occasional smaller bumps. It generally fluctuated between 400,000 and 800,000, with a notable dip towards the 350,000-400,000 range in 2021-2022. There's a small peak around 900,000 in early 2020, possibly a brief "pandemic bump."
+
+4. **Significant Resurgence (Mid 2023 - Mid 2025):** From mid-2023 onwards, PUBG shows a remarkable turnaround. The peak player count begins a consistent upward trend, steadily climbing from around 500,000 to over 1,300,000 players by early 2025. This indicates a very successful revitalization of the game's player base.
+
+5. **Recent Trend (Early - Mid 2025):** After reaching a recent peak of over 1.3 million in early 2025, there's a slight dip, with the count settling around 800,000-900,000 by mid-2025. However, this is still significantly higher than its player count in the 2021-2022 period.

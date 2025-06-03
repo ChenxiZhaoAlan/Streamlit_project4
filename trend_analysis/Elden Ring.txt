@@ -1,0 +1,14 @@
+### Elden Ring
+The graph for Elden Ring showcases a classic pattern for a highly anticipated and successful single-player game: an enormous launch peak, a sharp but expected decline as players complete the game, followed by a long period of lower but stable engagement, with a significant resurgence tied to major content releases.
+
+1. **Massive Launch Peak (Early 2022):** The game launched to an immense peak player count, soaring to nearly 1,000,000 players (around 950,000) shortly after its release in February 2022. This demonstrates the massive hype and critical acclaim surrounding the game.
+
+2. **Rapid Post-Launch Decline (Mid-2022):** Following the launch, there was a significant and rapid decline in peak players. Within a few months, the peak player count fell from its near-million peak to below 100,000. This is a common and expected trend for single-player games, as players finish the main story and associated content.
+
+3. **Low and Stable Baseline (Late 2022 - Early 2024):** Following the initial sharp decline, the peak player count stabilized at a significantly lower level, fluctuating between 40,000 and 100,000 players. This indicates a dedicated but smaller base of players revisiting the game, engaging in New Game+, or exploring its vast world in greater detail. There are minor bumps within this period, but nothing comparable to launch.
+
+4. **Significant Resurgence (Mid-2024):** Around mid-2024 (likely June), Elden Ring experienced a dramatic surge in peak players, climbing from its baseline to over 750,000 players. This massive spike is almost certainly due to the release of the highly anticipated "Shadow of the Erdtree" DLC, which was a significant content addition.
+
+5. **Post-DLC Decline (Late 2024):** Following the DLC's release, there's another expected, though slightly less precipitous, decline in peak players. The count drops from over 750,000 to around 50,000-100,000 by late 2024. This mirrors the post-launch pattern, as players complete the new content.
+
+6. **Current Stability (Early - Mid 2025):** As of early to mid-2025, the peak player count has settled back into a range similar to its pre-DLC baseline, fluctuating between 50,000 and 70,000. This suggests that while the DLC provided a huge temporary boost, the long-term player base returns to a consistent, albeit smaller, active community.
