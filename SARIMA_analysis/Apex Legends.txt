@@ -1,0 +1,5 @@
+### Apex Legends
+
+- The forecast charts for Apex Legends depict the game’s peak player counts from late 2020 to mid-2026. The historical data (blue line) reveals periodic surges and drops in player numbers, which likely correspond to seasonal events or content updates. However, after mid-2023, there’s a noticeable downward trend, showing a reduction in peak player counts. The green line, representing the SARIMA-based forecast, suggests that the player base is expected to stabilize around 200,000–250,000 players over the next year, with some periodic fluctuations.
+
+- The model’s confidence interval (orange shaded area) grows wider over time, indicating greater uncertainty in long-term predictions. By mid-2026, this range spans from below zero to over 600,000 players — a sign that while the central forecast suggests a steady player base, real-world variability could lead to unexpected growth or decline. Despite the relatively high error metrics (RMSE and MAE), the forecast does not suggest any major surges or crashes, pointing instead to a plateauing trend in Apex Legends’ player numbers.

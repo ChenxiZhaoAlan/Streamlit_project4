@@ -1,0 +1,5 @@
+### Destiny 2 
+
+- The forecast for Destiny 2 over the next year (green line) suggests a continuation of its historical pattern of fluctuating peak player counts. The historical data shows frequent spikes and dips, reflecting the game's cyclical player activity—likely tied to expansions, seasonal events, or major content updates.
+
+- The SARIMA model forecast projects that Destiny 2 will hover around 50,000 to 100,000 peak players in the coming year, although the forecast’s confidence interval (orange) indicates significant uncertainty. The RMSE of around 47,000 and MAE of about 36,500 suggest a reasonable model fit, but the broad confidence interval underscores the game's inherent volatility. Overall, Destiny 2 is expected to maintain its oscillating player trend with no clear growth or decline, staying within the typical activity range observed in the historical data.

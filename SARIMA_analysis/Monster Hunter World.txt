@@ -1,0 +1,5 @@
+### MHW
+
+- The forecast for Monster Hunter World suggests a gradual decline in peak players over the next year. Despite periodic spikes historically (likely due to expansions and events), the SARIMA model predicts that by mid-2026, the game's peak player count will be in the 30,000 to 40,000 range.
+
+- The forecast’s confidence interval is fairly wide, indicating some uncertainty, but the model still shows a slight but consistent downward trend, likely because the game's big content updates have slowed down. The RMSE and MAE are low compared to the peak player counts, meaning the forecast has a good fit.

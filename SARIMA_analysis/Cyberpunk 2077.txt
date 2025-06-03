@@ -1,0 +1,5 @@
+### Cyberpunk 2077
+
+- The forecast for Cyberpunk 2077 shows a game that peaked dramatically upon release in late 2020, reaching well over a million peak players. However, as the historical data shows, this was followed by a sharp and continuous decline in peak players through 2021 and into 2022, stabilizing below 100,000. Since then, it has experienced periodic small surges but has overall remained at low player counts.
+
+- The SARIMA model's forecast (green line) suggests that Cyberpunk 2077's player base will remain relatively flat through 2026, with only minor fluctuations and no significant resurgence expected. The confidence interval (orange) widens slightly, indicating some uncertainty, but it generally supports a stable yet low player count trend. The game's massive initial hype has cooled, and while it maintains a small, consistent player base, the forecast doesn’t suggest any major rebound in popularity. The relatively low RMSE (47,607) and MAE (46,724) reflect this stable low-level activity, suggesting the model has a good fit for this game's current trend.

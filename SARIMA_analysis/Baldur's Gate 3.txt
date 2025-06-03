@@ -1,0 +1,5 @@
+### Baldur's Gate 3
+
+- The historical data (blue line) shows a sharp spike in peak players around 2023—likely coinciding with the game’s launch or a major update—reaching a peak near 900,000 players. After this surge, the player base quickly dropped and has since stabilized at around 100,000–200,000 peak players.
+
+- The SARIMA model (green line) forecasts a very slight decline in the player base throughout 2025–2026, indicating a stabilizing trend without significant growth or shrinkage. The orange confidence interval highlights moderate uncertainty in these predictions, although it suggests the game will maintain a steady core player base in the near future. With relatively lower RMSE and MAE (23,611 and 18,494), the model’s forecast seems reasonably reliable given the data’s volatility following the launch spike. Overall, the forecast suggests that while Baldur’s Gate 3’s peak player counts have dropped significantly from their post-launch highs, they are expected to settle into a consistent range around 100,000–200,000 players in the coming year.

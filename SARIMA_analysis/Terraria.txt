@@ -1,0 +1,5 @@
+### Terraria
+
+- The Terraria 12-month forecast suggests stable peak player numbers in the 60,000–70,000 range, with a slight downward trend. The confidence interval is tight, indicating good model confidence in the forecast.
+
+- Historically, Terraria had significant peaks around 2015, 2020 (notably around the 1.4 update), but has since stabilized to a consistent player base.

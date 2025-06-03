@@ -1,0 +1,5 @@
+### Dota 2
+
+- The forecast for Dota 2 suggests a slight downward trend in peak player counts over the next year. The historical data shows a long-term growth period peaking around 2016-2017, followed by a gradual decline and then a more stable but slightly downward-sloping trend in recent years.
+
+- The forecast (green line) indicates that peak player counts will continue to decline modestly, with a forecast range generally around 600,000 to 700,000 players. The confidence interval (orange) shows a fairly broad range, reflecting uncertainty in the game's cyclical player activity. The RMSE of about 130,000 and MAE of 119,000 are relatively high, indicating some volatility in the data. However, the model suggests that while Dota 2's peak player counts will likely decrease slightly, the game will remain stable at a high level of engagement over the coming year.

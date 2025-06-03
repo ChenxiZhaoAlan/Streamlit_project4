@@ -1,0 +1,5 @@
+### PUBG
+
+- The PUBG forecast suggests a slight downward trend in peak player counts over the next year, stabilizing around the 500,000–700,000 range by mid-2026. Historically, PUBG peaked at over 3 million peak players in early 2018, and has been on a general decline since.
+
+- The model shows a narrow confidence interval, which suggests that the SARIMA forecast is more confident in its predictions for PUBG compared to other games (like Monster Hunter World).

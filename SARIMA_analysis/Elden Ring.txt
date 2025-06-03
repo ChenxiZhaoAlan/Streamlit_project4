@@ -1,0 +1,5 @@
+### Elden Ring
+
+- For Elden Ring, the forecast shows a sharp decline in peak player counts in the near term, likely driven by the game's lifecycle and waning post-launch excitement. The historical data show a strong launch spike in 2022, with a big decline followed by small player activity peaks — likely due to updates or DLCs.
+
+- The forecast (green line) anticipates gradual stabilization at around 40,000–60,000 peak players by mid-2026, within a broad confidence interval (orange band) due to uncertainty in player behavior, especially if there are future expansions or marketing events. The RMSE and MAE are relatively low compared to the overall player counts, indicating a reasonably good fit. Despite the downward trend, the game still shows signs of a loyal, stable player base maintaining a steady player count over the next 12 months.

@@ -1,0 +1,5 @@
+### CSGO
+
+- The historical data (blue line) highlights a steady climb from nearly zero in 2012 to around 1.5 million peak players by mid-2025. Notably, there are periodic dips and peaks, likely corresponding to in-game updates, events, or seasonal effects, but the overall trend is strongly upward.
+
+- The SARIMA model’s forecast (green line) predicts that this upward trend will continue into 2026, with peak player counts exceeding 2 million. The orange confidence interval grows wider over time, indicating that while the central forecast remains optimistic, the actual numbers could vary significantly—ranging from about 1.8 million to 2.5 million by 2026. Despite the relatively large RMSE (80,125) and MAE (68,220), the model suggests continued growth for CSGO’s player base. In short, the game’s popularity appears robust, with no signs of plateauing in the next year.
