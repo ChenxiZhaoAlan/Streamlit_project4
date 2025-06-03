@@ -1,4 +1,3 @@
-import os
 import warnings
 
 # 🌐 Streamlit & Web App
@@ -228,20 +227,30 @@ ax.legend()
 st.pyplot(fig)
 
 # Analysis
+import requests
+
 st.subheader("Previous Trend Analysis")
 
-# 统一处理文件名：去除冒号、单引号、空格等特殊字符
+# 安全处理文件名：避免包含非法字符
 safe_filename = selected_game.replace(":", "").replace("'", "").replace(" ", "")
-file_path = os.path.join("trend_analysis", f"{safe_filename}.txt")
+# 替换为你自己的 GitHub 用户名、仓库名和分支名
+github_username = "ChenxiZhaoAlan"
+github_repo = "streamlit_project4"
+branch = "main"  # 如果你使用的是 master 分支，改成 "master"
 
-# Displays the analyzed content of the corresponding game
-if os.path.exists(file_path):
-    with open(file_path, "r", encoding="utf-8") as f:
-        analysis_text = f.read()
-    st.markdown(f"📝 **{selected_game} Analysis:**\n\n{analysis_text}")
-else:
-    st.warning(f"No analysis found for {selected_game}. Please check if '{file_path}' exists.")
+# 构造 raw GitHub 文件 URL
+raw_url = f"https://raw.githubusercontent.com/{github_username}/{github_repo}/{branch}/trend_analysis/{safe_filename}.txt"
 
+# 加载并显示分析内容
+try:
+    response = requests.get(raw_url)
+    if response.status_code == 200:
+        analysis_text = response.text
+        st.markdown(f"📝 **{selected_game} Analysis:**\n\n{analysis_text}")
+    else:
+        st.warning(f"No analysis found for {selected_game} (HTTP {response.status_code})")
+except Exception as e:
+    st.error(f"Error loading analysis: {e}")
 
 #-------------------------------------------------------------------------
 # Time series analysis
