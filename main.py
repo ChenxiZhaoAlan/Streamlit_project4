@@ -1,5 +1,4 @@
 import warnings
-warnings.filterwarnings("ignore")
 
 # 🌐 Streamlit & Web
 import streamlit as st
