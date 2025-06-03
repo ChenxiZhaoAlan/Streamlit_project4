@@ -2,9 +2,11 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
-import seaborn as sns
 from keras.models import Sequential
 from keras.layers import LSTM, Dense
+from sklearn.preprocessing import MinMaxScaler
+
+import seaborn as sns
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import adfuller
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
@@ -220,9 +222,6 @@ st.pyplot(fig)
 
 with st.expander("Show Cluster Data Table"):
     st.dataframe(feature_df)
-
-
-
 
 
 def run_lstm_forecast(df, steps_ahead=30):
