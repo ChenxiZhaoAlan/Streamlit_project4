@@ -726,6 +726,17 @@ with st.expander("🔍 Perform Prophet parameter optimisation"):
 
             
             fig2 = final_model.plot_components(forecast)
+
+            # ✅ 统一美化所有子图
+            for ax in fig2.get_axes():
+                ax.set_facecolor("none")                      # 背景透明
+                ax.grid(True, linestyle='--', alpha=0.5)      # 柔和网格线
+                ax.title.set_fontsize(14)                     # 子图标题字号
+                ax.xaxis.label.set_fontsize(12)               # x轴标签字号
+                ax.yaxis.label.set_fontsize(12)               # y轴标签字号
+
+            fig2.patch.set_alpha(0.0)                         # 整体背景透明
+            fig2.tight_layout()
+
             st.pyplot(fig2)
-            
             
