@@ -1,0 +1,9 @@
+### CSGO
+
+- Prophet Forecast: Presents the overall forecast results. The black dots represent the actual observed data, the blue solid line is the model's prediction, and the light blue area represents the prediction's confidence interval. The chart clearly shows the continuous growth trend of this indicator since 2013, accompanied by significant seasonal fluctuations. The model fits the historical data well and predicts that this growth trend will continue until the end of 2026, while the prediction's confidence interval gradually expands over time.
+
+- Forecast Components - Trend: This section breaks down the long-term trend identified by the model. The trend line shows a smooth and continuously increasing non-linear growth, rising steadily from a level close to zero in 2013 and projected to reach approximately 1.75 million by the end of 2026.
+
+- Annual Seasonality: This indicator shows the annual seasonal patterns extracted by the model. There are several distinct peak periods each year, such as in March (approximately +12%), from the end of April to the beginning of May (approximately +12%), and from December to January of the following year (approximately +5%). The trough periods mainly occur in July (approximately -15%) and from October to November (approximately -5% to -10%).
+
+- MAPE Cross-Validation: This is the cross-validation result of the model's prediction accuracy, using Mean Absolute Percentage Error (MAPE) as the evaluation metric. The X-axis represents the forecast period (Horizon, in units of days), and the Y-axis represents the MAPE value. The chart shows that the MAPE value remains mostly between 0.1 and 0.3 (i.e., an error of 10% to 30%) across different forecast periods. For shorter forecast periods (such as within 300 days), the MAPE value fluctuates between 0.2 and 0.29, while for longer forecast periods (such as 400 to 900 days), the MAPE value shows a slight downward trend, mostly ranging from 0.1 to 0.2.
