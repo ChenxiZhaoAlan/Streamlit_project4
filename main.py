@@ -1,28 +1,28 @@
 import warnings
+warnings.filterwarnings("ignore")
 
-# 🌐 Streamlit & Web App
+# 🌐 Streamlit & Web
 import streamlit as st
+import requests
+import urllib.parse
 
-# 📊 Data Manipulation
+# 📊 Data
 import pandas as pd
 import numpy as np
 import itertools
 
-# 📈 Plotting & Visualization
+# 📈 Visualization
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import matplotlib.dates as mdates
-import seaborn as sns
-from matplotlib import cm
-from matplotlib.patches import FancyBboxPatch
-import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import plotly.graph_objects as go
 
-# 🔮 Prophet Forecasting
+# 🔮 Forecasting
 from prophet import Prophet
 from prophet.diagnostics import cross_validation, performance_metrics
 
-# 📉 Time Series Analysis
+# 📉 Time Series
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import adfuller
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
@@ -31,9 +31,6 @@ from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
-
-import requests
-import urllib.parse
 
 
 
@@ -425,17 +422,12 @@ for ax in axes:
 st.pyplot(fig)
 
 # Analysis
-
 st.subheader("Current Trend Time Series Analysis")
 
-# 安全地处理文件名：转义空格、特殊符号等
 safe_filename = urllib.parse.quote(f"{selected_game}.txt")
-
-# GitHub Raw 文件基础路径（改成你的 repo 和文件夹路径）
 base_url = "https://raw.githubusercontent.com/ChenxiZhaoAlan/streamlit_project4/main/Time_series_analysis"
 file_url = f"{base_url}/{safe_filename}"
 
-# 读取并展示分析内容
 try:
     response = requests.get(file_url)
     if response.status_code == 200:
