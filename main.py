@@ -221,15 +221,20 @@ with st.expander("Show Cluster Data Table"):
     
     
     
-st.header("🔧 Prophet 参数网格搜索优化")
+with st.expander("🔍 进行 Prophet 参数优化"):
+    if st.button("开始参数网格搜索"):
+        result_df, final_model, forecast = run_prophet_grid_search(selected_game, games[selected_game])
 
-# 勾选触发优化功能
-enable_grid_search = st.checkbox("启用 Prophet 参数网格搜索优化")
+        if isinstance(result_df, str):
+            st.warning(result_df)
+        else:
+            st.success("网格搜索完成，最佳模型已训练。")
+            st.dataframe(result_df)
 
-if enable_grid_search:
-    st.info("将使用 GridSearch 对 Prophet 模型的参数进行优化。")
+            # 可视化预测图
+            fig1 = final_model.plot(forecast)
+            st.pyplot(fig1)
 
-    if df_prophet.shape[0] < 24:
-        st.warning("当前数据点少于 24，不适合进行交叉验证。")
-    else:
-        with st.spinner("正在进行网格搜索优化..."):
+            fig2 = final_model.plot_components(forecast)
+            st.pyplot(fig2)
+
