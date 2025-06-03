@@ -1,3 +1,4 @@
+import os
 import warnings
 
 # 🌐 Streamlit & Web App
@@ -228,16 +229,19 @@ st.pyplot(fig)
 
 # Analysis
 st.subheader("Previous Trend Analysis")
+
+# 统一处理文件名：去除冒号、单引号、空格等特殊字符
 safe_filename = selected_game.replace(":", "").replace("'", "").replace(" ", "")
-file_path = f"trend_analysis/{selected_game}.txt"
+file_path = os.path.join("trend_analysis", f"{safe_filename}.txt")
 
 # Displays the analyzed content of the corresponding game
-if path.exists(file_path):
+if os.path.exists(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
         analysis_text = f.read()
     st.markdown(f"📝 **{selected_game} Analysis:**\n\n{analysis_text}")
 else:
     st.warning(f"No analysis found for {selected_game}. Please check if '{file_path}' exists.")
+
 
 #-------------------------------------------------------------------------
 # Time series analysis
