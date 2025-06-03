@@ -15,8 +15,50 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 
+
+
+
+
+
+
+
+
 # Set page config
 st.set_page_config(page_title="Steam Game Trends", layout="centered")
+
+# functions and calls for inserting background GIFs)
+def set_bg_gif(gif_url, opacity=0.3):
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-color: transparent;
+        }}
+
+        .stApp::before {{
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("{gif_url}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            opacity: {opacity};
+            z-index: -1; 
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+
+set_bg_gif("https://forums.terraria.org/index.php?attachments/snowbiome720p-gif.412700/", opacity=0.4)
+
+
 
 st.title("🎮 Steam Game Peak Player Trends")
 st.write("This is an interactive webpage to display the predicions of the trend of Steam Games. The data obtain for this forecastting model was obtained from [Steam's Official Website](https://steamdb.info/).")
@@ -314,4 +356,3 @@ with st.expander("🔍 Perform Prophet parameter optimisation"):
 
             fig2 = final_model.plot_components(forecast)
             st.pyplot(fig2)
-
