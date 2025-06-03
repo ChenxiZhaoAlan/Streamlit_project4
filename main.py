@@ -32,6 +32,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 
+import requests
+import urllib.parse
+
 
 
 
@@ -227,11 +230,9 @@ ax.legend()
 st.pyplot(fig)
 
 # Analysis
-import requests
-import urllib.parse
 st.subheader("Previous Trend Analysis")
 
-# 转换文件名中可能的特殊字符
+# Convert possible special characters in file names
 safe_filename = urllib.parse.quote(f"{selected_game}.txt")
 base_url = "https://raw.githubusercontent.com/ChenxiZhaoAlan/streamlit_project4/main/trend_analysis"
 file_url = f"{base_url}/{safe_filename}"
@@ -424,18 +425,26 @@ for ax in axes:
 st.pyplot(fig)
 
 # Analysis
+
 st.subheader("Current Trend Time Series Analysis")
-safe_filename = selected_game.replace(":", "").replace("'", "").replace(" ", "")
-file_path = f"Time_series_analysis/{selected_game}.txt"
 
-# Displays the analyzed content of the corresponding game
-if path.exists(file_path):
-    with open(file_path, "r", encoding="utf-8") as f:
-        analysis_text = f.read()
-    st.markdown(f"📝 **{selected_game} Analysis:**\n\n{analysis_text}")
-else:
-    st.warning(f"No analysis found for {selected_game}. Please check if '{file_path}' exists.")
+# 安全地处理文件名：转义空格、特殊符号等
+safe_filename = urllib.parse.quote(f"{selected_game}.txt")
 
+# GitHub Raw 文件基础路径（改成你的 repo 和文件夹路径）
+base_url = "https://raw.githubusercontent.com/ChenxiZhaoAlan/streamlit_project4/main/Time_series_analysis"
+file_url = f"{base_url}/{safe_filename}"
+
+# 读取并展示分析内容
+try:
+    response = requests.get(file_url)
+    if response.status_code == 200:
+        analysis_text = response.text
+        st.markdown(f"📝 **{selected_game} Time Series Analysis:**\n\n{analysis_text}")
+    else:
+        st.warning(f"No analysis found for {selected_game}. (HTTP {response.status_code})")
+except Exception as e:
+    st.error(f"Failed to fetch time series analysis text: {e}")
 
 #------------------------------------------------------
 
