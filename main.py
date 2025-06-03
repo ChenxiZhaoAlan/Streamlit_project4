@@ -1,36 +1,32 @@
-import warnings
-
-# 🌐 Streamlit & Web
 import streamlit as st
-import requests
-import urllib.parse
-
-# 📊 Data
+import os
 import pandas as pd
-import numpy as np
-import itertools
-
-# 📈 Visualization
-import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
-import matplotlib.dates as mdates
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
-
-# 🔮 Forecasting
+import seaborn as sns
+import itertools
+import numpy as np
 from prophet import Prophet
 from prophet.diagnostics import cross_validation, performance_metrics
-
-# 📉 Time Series
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import adfuller
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
-
-# 🤖 Machine Learning
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
-
+import matplotlib.dates as mdates
+import plotly.graph_objects as go
+import matplotlib.pyplot as plt
+from matplotlib import cm
+from matplotlib.patches import FancyBboxPatch
+from prophet import Prophet
+import warnings
+import matplotlib.pyplot as plt
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+import streamlit as st
+import pandas as pd
+from prophet import Prophet
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 
 
@@ -227,21 +223,17 @@ st.pyplot(fig)
 
 # Analysis
 st.subheader("Previous Trend Analysis")
+safe_filename = selected_game.replace(":", "").replace("'", "").replace(" ", "")
+file_path = f"trend_analysis/{selected_game}.txt"
 
-# Convert possible special characters in file names
-safe_filename = urllib.parse.quote(f"{selected_game}.txt")
-base_url = "https://raw.githubusercontent.com/ChenxiZhaoAlan/streamlit_project4/main/trend_analysis"
-file_url = f"{base_url}/{safe_filename}"
+# Displays the analyzed content of the corresponding game
+if os.path.exists(file_path):
+    with open(file_path, "r", encoding="utf-8") as f:
+        analysis_text = f.read()
+    st.markdown(f"📝 **{selected_game} Analysis:**\n\n{analysis_text}")
+else:
+    st.warning(f"No analysis found for {selected_game}. Please check if '{file_path}' exists.")
 
-try:
-    response = requests.get(file_url)
-    if response.status_code == 200:
-        analysis_text = response.text
-        st.markdown(f"📝 **{selected_game} Analysis:**\n\n{analysis_text}")
-    else:
-        st.warning(f"No analysis found for {selected_game}. (HTTP {response.status_code})")
-except Exception as e:
-    st.error(f"Failed to fetch analysis text: {e}")
 #-------------------------------------------------------------------------
 # Time series analysis
 # Set up indexes and fill in missing values
@@ -421,6 +413,18 @@ for ax in axes:
 st.pyplot(fig)
 
 # Analysis
+st.subheader("Current Trend Time Series Analysis")
+safe_filename = selected_game.replace(":", "").replace("'", "").replace(" ", "")
+file_path = f"Time_series_analysis/{selected_game}.txt"
+
+# Displays the analyzed content of the corresponding game
+if os.path.exists(file_path):
+    with open(file_path, "r", encoding="utf-8") as f:
+        analysis_text = f.read()
+    st.markdown(f"📝 **{selected_game} Analysis:**\n\n{analysis_text}")
+else:
+    st.warning(f"No analysis found for {selected_game}. Please check if '{file_path}' exists.")
+
 
 #------------------------------------------------------
 
