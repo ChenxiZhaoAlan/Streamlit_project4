@@ -228,13 +228,15 @@ st.pyplot(fig)
 
 # Analysis
 import requests
+import streamlit as st
 
 st.subheader("Previous Trend Analysis")
 
-# 安全转换文件名，防止空格、特殊字符导致无法找到对应的 GitHub 文件
+# 安全转换文件名（避免特殊字符问题）
 safe_filename = selected_game.replace(":", "").replace("'", "").replace(" ", "")
-base_url = "https://github.com/ChenxiZhaoAlan/streamlit_project4/tree/main/trend_analysis"
-file_url = f"{base_url}/{safe_filename}.txt"
+
+# ✅ GitHub 原始内容地址（raw）
+file_url = f"https://raw.githubusercontent.com/ChenxiZhaoAlan/streamlit_project4/main/trend_analysis/{safe_filename}.txt"
 
 # 请求并显示分析内容
 try:
