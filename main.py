@@ -677,9 +677,9 @@ cbar.ax.tick_params(labelsize=10)
 st.pyplot(fig)
 
 st.write("This chart shows game clustering using K-Means, visualized with PCA. Each point is a game, and colors represent clusters:")
-st.write("- Cluster 0 (purple): Cyberpunk 2077, Monster Hunter World - likely single-player RPGs.")
-st.write("- Cluster 1 (teal): CSGO, Dota 2 - competitive multiplayer games.")
-st.write("- Cluster 2 (yellow): Terraria, Destiny 2, Baldur's Gate 3 - diverse mix with co-op or progression elements.")
+st.write("- Cluster 0 : Cyberpunk 2077, Monster Hunter World - likely single-player RPGs.")
+st.write("- Cluster 1 : CSGO, Dota 2 - competitive multiplayer games.")
+st.write("- Cluster 2 : Terraria, Destiny 2, Baldur's Gate 3 - diverse mix with co-op or progression elements.")
 
 
 # ----------------------------------------------
